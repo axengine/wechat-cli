@@ -29,8 +29,8 @@ def cli(ctx, config_path):
       wechat-cli contacts --query "李"              # 搜索联系人
       wechat-cli new-messages                       # 获取增量新消息
     """
-    # init/version 命令不需要 AppContext
-    if ctx.invoked_subcommand in ("init", "version"):
+    # init/version/status 命令不需要 AppContext
+    if ctx.invoked_subcommand in ("init", "version", "status"):
         return
 
     try:
@@ -55,6 +55,7 @@ from .commands.export import export
 from .commands.stats import stats
 from .commands.unread import unread
 from .commands.favorites import favorites
+from .commands.status import status
 
 cli.add_command(init)
 cli.add_command(sessions)
@@ -67,6 +68,7 @@ cli.add_command(export)
 cli.add_command(stats)
 cli.add_command(unread)
 cli.add_command(favorites)
+cli.add_command(status)
 
 
 if __name__ == "__main__":
